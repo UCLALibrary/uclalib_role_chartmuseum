@@ -1,0 +1,29 @@
+---
+
+- name: Determine if Chartmuseum is installed
+  stat:
+    path: "{{ chartmuseum_install_dir }}/chartmuseum"
+  register: cm_status
+  changed_when: "false"
+
+- name: Check Chartmuseum installed version
+  shell: >
+    {{ chartmuseum_install_dir }}/chartmuseum --version | awk '{ print $3 }'
+  register: cm_installed_version
+  changed_when: "false"
+  when: cm_status.stat.exists|bool
+
+- name: Download Chartmuseum 
+  unarchive:
+    remote_src: "yes"
+    src: "{{ chartmuseum_download_url }}"
+    dest: "{{ chartmuseum_install_dir }}"
+    owner: "{{ chartmuseum_user }}"
+    group: "{{ chartmuseum_user }}"
+    mode: "0750"
+    extra_opts:
+      - "--strip=1"
+      - "*/chartmuseum"
+  when: (cm_status.stat.exists|bool == false) or (cm_status.stat.exists|bool == true and cm_installed_version.stdout != chartmuseum_version)
+  notify:
+   - Restart Chartmuseum

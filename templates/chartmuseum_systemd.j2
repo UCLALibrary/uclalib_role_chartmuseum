@@ -1,0 +1,14 @@
+[Unit]
+Description=Helm Chartmuseum
+Documentation=https://chartmuseum.com/
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ chartmuseum_user }}
+ExecStart={{ chartmuseum_install_dir }}/chartmuseum --config={{ chartmuseum_config_dir }}/chartmuseum_config.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

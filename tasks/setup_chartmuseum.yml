@@ -1,0 +1,23 @@
+---
+
+- name: Create Chartmuseum group 
+  group:
+    name: "{{ chartmuseum_user }}"
+    state: "present"
+
+- name: Create Chartmuseum user 
+  user:
+    name: "{{ chartmuseum_user }}"
+    group: "{{ chartmuseum_user }}"
+    shell: "/bin/bash"
+    home: "/home/{{ chartmuseum_user }}"
+    comment: "Chartmuseum User Account"
+    state: "present"
+
+- name: Create Chartmuseum configuration directory
+  file:
+    path: "{{ chartmuseum_config_dir }}"
+    owner: "{{ chartmuseum_user }}"
+    group: "{{ chartmuseum_user }}"
+    mode: "0755"
+    state: directory

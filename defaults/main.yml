@@ -1,0 +1,20 @@
+---
+
+chartmuseum_version: "v0.14.0"
+
+chartmuseum_download_url: "https://get.helm.sh/chartmuseum-{{ chartmuseum_version }}-linux-amd64.tar.gz"
+
+chartmuseum_install_dir: "/usr/local/bin"
+
+chartmuseum_user: "chartmuseum"
+
+chartmuseum_config_dir: "/etc/chartmuseum"
+
+# Chartmuseum config options #
+chartmuseum_port: ""
+chartmuseum_storage_backend: ""
+chartmuseum_storage_local_rootdir: ""
+chartmuseum_cache_store: ""
+chartmuseum_cache_redis_addr: ""
+chartmuseum_cache_redis_password: ""
+chartmuseum_cache_redis_db: ""

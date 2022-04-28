@@ -1,0 +1,6 @@
+---
+
+- name: Restart Chartmuseum
+  service:
+    name: "chartmuseum"
+    state: "restarted"

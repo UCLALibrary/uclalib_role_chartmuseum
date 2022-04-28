@@ -1,0 +1,13 @@
+---
+
+- import_tasks: setup_chartmuseum.yml
+  tags:
+    - setup-cm
+
+- import_tasks: install_chartmuseum.yml
+  tags:
+    - install-cm
+
+- import_tasks: configure_chartmuseum.yml
+  tags:
+    - config-cm

@@ -1,0 +1,31 @@
+---
+
+- name: Put in place Chartmuseum SystemD Unit file 
+  template:
+    src: "chartmuseum_systemd.j2"
+    dest: "/etc/systemd/system/chartmuseum.service"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  register: cm_sysdunit_file
+
+- name: SystemD Daemon Reload
+  systemd:
+    daemon_reload: "yes"
+  when: cm_sysdunit_file.changed
+
+- name: Enable Chartmuseum service 
+  service:
+    name: "chartmuseum" 
+    enabled: "yes"
+
+- name: Put in place Chartmuseum configuration file 
+  template:
+    src: "chartmuseum_config.j2"
+    dest: "{{ chartmuseum_config_dir }}/chartmuseum_config.yaml"
+    owner: "{{ chartmuseum_user }}"
+    group: "{{ chartmuseum_user }}"
+    mode: "0640"
+    backup: "yes"
+  notify: 
+    - Restart Chartmuseum 
