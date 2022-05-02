@@ -35,6 +35,9 @@ ChartMuseum configuration parameters (these do not have default values, so set t
   * `chartmuseum_cache_redis_addr` - Defines the IP:PORT where the redis cache is running
   * `chartmuseum_cache_redis_password` - Defines the password used (if any) for authenticaitng to the redis cache
   * `chartmuseum_cache_redis_db` - Defines the DB number of the redis cache
+  * `chartmuseum_basicauth_user` - Defines the username for HTTP basic authentication
+  * `chartmuseum_basicauth_password` - Defines the password for HTTP basic authentication
+  * `chartmuseum_basicauth_anonymousget` - Defines if anonymous HTTP GET access is allowed with basic authentiation is enabled
 
 Tags
 ----
