@@ -21,3 +21,11 @@
     group: "{{ chartmuseum_user }}"
     mode: "0755"
     state: directory
+
+- name: Create Chartmuseum storage directory
+  file:
+    path: "{{ chartmuseum_storage_local_rootdir }}"
+    owner: "{{ chartmuseum_user }}"
+    group: "{{ chartmuseum_user }}"
+    mode: "0755"
+    state: directory
