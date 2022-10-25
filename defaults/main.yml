@@ -1,6 +1,6 @@
 ---
 
-chartmuseum_version: "v0.14.0"
+chartmuseum_version: "v0.15.0"
 
 chartmuseum_download_url: "https://get.helm.sh/chartmuseum-{{ chartmuseum_version }}-linux-amd64.tar.gz"
 
